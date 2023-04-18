@@ -18,9 +18,11 @@ const Home = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct());
-  }, [dispatch, error, alert]);
+  }, [error]);
 
+  useEffect(() => {
+    dispatch(getProduct());
+  }, []);
   return (
     <Fragment>
       {loading ? (

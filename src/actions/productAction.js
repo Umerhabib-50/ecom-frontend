@@ -45,16 +45,17 @@ export const getProduct =
       // }
 
       // const { data } = await axios.get(link);
-      const { data } = await axios.get(`/api/v1/products`);
+      const { data } = await axios.get(`/api/v1/products?keyword=${keyword}`);
 
       dispatch({
         type: ALL_PRODUCT_SUCCESS,
         payload: data,
       });
-    } catch (error) {
+    } catch (err) {
       dispatch({
         type: ALL_PRODUCT_FAIL,
-        payload: error.response.data.message,
+        // payload: err.response.data.message,
+        payload: err.response.data.error.message || true,
       });
     }
   };

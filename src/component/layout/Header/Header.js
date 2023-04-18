@@ -13,10 +13,12 @@ const options = {
   link2Text: "Products",
   link3Text: "Contact",
   link4Text: "About",
+  link5Text: "Search",
   link1Url: "/",
   link2Url: "/products",
   link3Url: "/contact",
   link4Url: "/about",
+  link5Url: "/search",
   link1Size: "1.3vmax",
   link1Color: "rgba(35, 35, 35,0.8)",
   nav1justifyContent: "flex-end",
@@ -27,7 +29,7 @@ const options = {
   link1Margin: "1vmax",
   profileIconUrl: "/login",
   profileIconColor: "rgba(35, 35, 35,0.8)",
-  searchIconColor: "rgba(35, 35, 35,0.8)",
+  searchIconColor: "black",
   cartIconColor: "rgba(35, 35, 35,0.8)",
   profileIconColorHover: "#eb4034",
   searchIconColorHover: "#eb4034",
@@ -36,7 +38,12 @@ const options = {
 };
 
 const Header = () => {
-  return <ReactNavbar {...options} />;
+  // return <ReactNavbar {...options} />;
+  return (
+    <>
+      <ReactNavbar {...options} />
+    </>
+  );
 };
 
 export default Header;
