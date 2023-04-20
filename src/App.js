@@ -78,6 +78,7 @@ function App() {
       <Route path="/products/:keyword" component={Products} />
 
       <Route exact path="/search" component={Search} />
+      <Route exact path="/login" component={LoginSignUp} />
 
       <Footer />
     </Router>

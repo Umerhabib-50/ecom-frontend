@@ -27,19 +27,13 @@ const Products = ({ match }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [price, setPrice] = useState([0, 200000]);
+  const [price, setPrice] = useState([0, 20000]);
   const [category, setCategory] = useState("");
 
   const [ratings, setRatings] = useState(0);
 
-  const {
-    products,
-    loading,
-    error,
-    productsCount,
-    resultPerPage,
-    filteredProductsCount,
-  } = useSelector((state) => state.products);
+  const { products, loading, error, resultPerPage, filteredProductsCount } =
+    useSelector((state) => state.products);
 
   const keyword = match.params.keyword;
 
@@ -51,8 +45,8 @@ const Products = ({ match }) => {
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };
-  // let count = filteredProductsCount;
-  let count = 10;
+  let count = filteredProductsCount;
+  // let count = 10;
 
   // useEffect(() => {
   //   if (error) {
@@ -69,8 +63,8 @@ const Products = ({ match }) => {
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword, currentPage, price));
-  }, [dispatch, keyword, currentPage, price]);
+    dispatch(getProduct(keyword, currentPage, price, category, ratings));
+  }, [dispatch, keyword, currentPage, price, category, ratings]);
 
   return (
     <Fragment>
@@ -96,7 +90,7 @@ const Products = ({ match }) => {
                   valueLabelDisplay="auto"
                   aria-labelledby="range-slider"
                   min={0}
-                  max={200000}
+                  max={20000}
                 />
 
                 <Typography>Categories</Typography>
@@ -138,12 +132,12 @@ const Products = ({ match }) => {
                 ))}
             </div>
           </div>
-          {resultPerPage < productsCount && (
+          {resultPerPage < count && (
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}
                 itemsCountPerPage={resultPerPage}
-                totalItemsCount={productsCount}
+                totalItemsCount={count}
                 onChange={setCurrentPageNo}
                 nextPageText="Next"
                 prevPageText="Prev"
