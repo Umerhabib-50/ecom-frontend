@@ -71,14 +71,26 @@ function App() {
   return (
     <Router>
       <Header />
-
+      {isAuthenticated && <UserOptions user={user} />}
       <Route exact path="/" component={Home} />
       <Route exact path="/product/:id" component={ProductDetails} />
       <Route exact path="/products" component={Products} />
       <Route path="/products/:keyword" component={Products} />
 
       <Route exact path="/search" component={Search} />
+      {/* <Route exact path="/contact" component={Contact} /> */}
+      <ProtectedRoute exact path="/account" component={Profile} />
+      <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
+      <ProtectedRoute
+        exact
+        path="/password/update"
+        component={UpdatePassword}
+      />
+
+      <Route exact path="/password/forgot" component={ForgotPassword} />
+      <Route exact path="/password/reset/:token" component={ResetPassword} />
       <Route exact path="/login" component={LoginSignUp} />
+      <Route exact path="/cart" component={Cart} />
 
       <Footer />
     </Router>

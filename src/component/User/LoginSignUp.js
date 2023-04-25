@@ -17,8 +17,6 @@ const LoginSignUp = ({ history, location }) => {
     (state) => state.user
   );
 
-  console.log(useSelector((state) => state.user));
-
   const loginTab = useRef(null);
   const registerTab = useRef(null);
   const switcherTab = useRef(null);

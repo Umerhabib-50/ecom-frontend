@@ -38,7 +38,6 @@ const Products = ({ match }) => {
   const keyword = match.params.keyword;
 
   const setCurrentPageNo = (e) => {
-    console.log(e);
     setCurrentPage(e);
   };
 
