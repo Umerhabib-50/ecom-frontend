@@ -33,18 +33,10 @@ import {
 
 // Get All Products
 export const getProduct =
-  (keyword = "", currentPage = 1, price = [0, 20000], category, ratings = 0) =>
+  (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
-
-      // let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
-
-      // if (category) {
-      //   link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
-      // }
-
-      // const { data } = await axios.get(link);
 
       let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
@@ -58,10 +50,10 @@ export const getProduct =
         type: ALL_PRODUCT_SUCCESS,
         payload: data,
       });
-    } catch (err) {
+    } catch (error) {
       dispatch({
         type: ALL_PRODUCT_FAIL,
-        payload: err?.response?.data?.error?.message || err?.message,
+        payload: error.response.data.message,
       });
     }
   };

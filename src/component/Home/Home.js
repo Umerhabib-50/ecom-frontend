@@ -18,11 +18,9 @@ const Home = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-  }, [error]);
-
-  useEffect(() => {
     dispatch(getProduct());
-  }, []);
+  }, [dispatch, error, alert]);
+
   return (
     <Fragment>
       {loading ? (

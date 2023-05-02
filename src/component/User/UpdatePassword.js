@@ -23,13 +23,13 @@ const UpdatePassword = ({ history }) => {
   const updatePasswordSubmit = (e) => {
     e.preventDefault();
 
-    // const myForm = new FormData();
+    const myForm = new FormData();
 
-    // myForm.set("oldPassword", oldPassword);
-    // myForm.set("newPassword", newPassword);
-    // myForm.set("confirmPassword", confirmPassword);
+    myForm.set("oldPassword", oldPassword);
+    myForm.set("newPassword", newPassword);
+    myForm.set("confirmPassword", confirmPassword);
 
-    dispatch(updatePassword({ oldPassword, newPassword, confirmPassword }));
+    dispatch(updatePassword(myForm));
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const UpdatePassword = ({ history }) => {
     }
 
     if (isUpdated) {
-      alert.success("Password Updated Successfully");
+      alert.success("Profile Updated Successfully");
 
       history.push("/account");
 
